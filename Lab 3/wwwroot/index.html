@@ -4,22 +4,56 @@
     <meta charset="utf-8" />
     <title>Lab 3</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
+    <script src="moment.min.js"></script>
+
 </head>
 
 <body>
+    <script src="lab3.js"></script>
+
+
+
     <form>
         <h2>Beverage Order</h2>
         <div class="form-group">
             <label for="exampleInputCustomerName">Customer Name</label>
-            <input type="email" class="form-control" id="exampleInputCustomerName" placeholder="Enter Customer Name">
-            
+            <input type="Name" class="form-control" id="exampleInputCustomerName" placeholder="Enter Customer Name">
         </div>
-        </form>
-        <script>
-            let row = moment();
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Beverage</label>
+            </div>
 
-        </script>
+            <SELECT NAME="custom-select" onChange = "calculatePrice()" id="inputGroupSelect01">
+       <OPTION value="0">Select a beverage</OPTION>
+       <OPTION value="109">Coffee</OPTION>
+       <OPTION value="79">Tea</OPTION>
+       <OPTION value="279">Beer</OPTION>
+	    <OPTION value="279">Wine</OPTION>
+            </select>
+        </div>
+
+		<label for="quantity" class="pr-3">Quantity</label>
+                <input type="number" class="form-control" name="quantity" id="quantity" />
+            </div>
+
+            <div class="form-group">
+                <label for="birthdate" class="pr-5">Birthdate</label>
+                <input type="date" name="birthdate" id="birthdate" min="1997-10-02"/>
+            </div>
+
+            <input type="submit" id="submit" class=" btn btn-success" value="Submit Order" />
+
+        </form>
+
+        <div class="container border w-25 m-3 d-none">
+            <h1>HELLO</h1>
+        </div>
+    </div>
+
+
+    </form>
+    <script>
+    </script
 </body>
 </html>
