@@ -1,7 +1,7 @@
 ﻿var ageRequired = function () {
     var drink = document.querySelector("select option:checked").value;
     var dateDisplay = document.querySelector("#birthday");
-    if (drink == "2" || drink == "4") {
+    if (drink == "2" || drink == "3") {
         dateDisplay.style.visibility = "visible";
     } else {
         dateDisplay.style.visibility = "hidden";
