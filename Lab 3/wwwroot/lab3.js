@@ -1,20 +1,4 @@
-﻿var ageCalc = function () {
-    var date = document.querySelector("#date").value;
-    var birthday = moment(date);
-    var minimum = moment().subtract("21", 'years');
-
-    if (birthday.isAfter(minimum)) {
-        document.querySelector("#boxtitle").innerHTML = "Must be born before ";
-        document.querySelector("#boxcontent1").innerHTML = minimum.format("dddd, MMMM, D, YYYY");
-        document.querySelector("#boxcontent2").innerHTML = "to purchase this beverage.";
-        document.querySelector("#infobox").style.visibility = "visible";
-        return false;
-    } else {
-        return true;
-    }
-}
-
-var ageRequired = function () {
+﻿var ageRequired = function () {
     var drink = document.querySelector("select option:checked").value;
     var dateDisplay = document.querySelector("#birthday");
     if (drink == "2" || drink == "4") {
@@ -24,8 +8,25 @@ var ageRequired = function () {
     }
 }
 
+var calcAge = function () {
+    var date = document.querySelector("#date").value;
+    var birthday = moment(date);
+    var minimum = moment().subtract("21", 'years');
+
+    if (birthday.isAfter(minimum)) {
+        document.querySelector("#box1").innerHTML = "Must be born before ";
+        document.querySelector("#box2").innerHTML = minimum.format("dddd, MMMM, D, YYYY");
+        document.querySelector("#box3").innerHTML = "to purchase this beverage.";
+        document.querySelector("#receiptbox").style.visibility = "visible";
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
 var prices = [[2.5, 3.5, 5], [2.5, 3, 4.5], [5, 6.5, 8], [5, 8, 10]];
-var beverages = ["Cofee", "Tea", "Beer", "Wine"];
+var beverages = ["Coffee", "Tea", "Beer", "Wine"];
 var sizes = { 0: "Small", 1: "Medium", 2: "Large" };
 
 var submitOrder = function () {
@@ -37,17 +38,17 @@ var submitOrder = function () {
     var price = prices[drink][size];
     var totalPrice = quantity * price;
 
-    if (ageCalc()) {
-        document.querySelector("#boxtitle").innerHTML = "Receipt";
-        document.querySelector("#boxcontent1").innerHTML = name + " ordered " + quantity + " " + sizes[size] + " " + drinkName + " @ $" + price + " each."
-        document.querySelector("#boxcontent2").innerHTML = "TOTAL: $" + totalPrice;
-        document.querySelector("#infobox").style.visibility = "visible";
+    if (calcAge()) {
+        document.querySelector("#box1").innerHTML = "Customer: " + name;
+        document.querySelector("#box2").innerHTML = quantity + " " + sizes[size] + " " + drinkName + " @ $" + price;
+        document.querySelector("#box3").innerHTML = "TOTAL DUE: $" + totalPrice;
+        document.querySelector("#receiptbox").style.visibility = "visible";
     }
 }
 
 window.onload = function () {
     document.querySelector("#birthday").style.visibility = "hidden";
-    document.querySelector("#infobox").style.visibility = "hidden";
+    document.querySelector("#receiptbox").style.visibility = "hidden";
     var dropdown = document.querySelector("#drop");
     var dateSelector = document.querySelector("#date");
     dropdown.onchange = ageRequired;
